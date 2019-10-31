@@ -2,7 +2,7 @@ This repository contains static builds of Qt for Windows that are compatible wit
 
 *Please be aware this download is NOT an officially sanctioned Bitcoin Core distribution and is provided for developer convenience. It should NOT be used for builds that will be used in a production environment or with real funds.*
 
-# Qt5.9.7
+### Qt5.9.7
 Build steps
 ````
 Modify Qtv5.9.7_src\qtbase\mkspecs\common\msvc-desktop.conf and set:
@@ -15,7 +15,7 @@ nmake
 nmake install
 ````
 
-# Qt5.9.8
+### Qt5.9.8
 Build steps
 ````
 Download source from https://download.qt.io/official_releases/qt/5.9/5.9.8/single/
