@@ -2,6 +2,10 @@ This repository contains static builds of Qt for Windows that are compatible wit
 
 *Please be aware this download is NOT an officially sanctioned Bitcoin Core distribution and is provided for developer convenience. It should NOT be used for builds that will be used in a production environment or with real funds.*
 
+Note: To build using a specific version of Visual Studio install the `build tools` package from [here](https://docs.microsoft.com/en-us/visualstudio/releases/2019/history#installing-an-earlier-release).
+
+Note: To check which version of Visual Studio Appveyor is currently using see [here](https://www.appveyor.com/docs/windows-images-software/).
+
 ### Qt5.12.6
 Build steps
 ````
