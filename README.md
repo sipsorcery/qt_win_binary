@@ -6,13 +6,16 @@ Note: To build using a specific version of Visual Studio install the `build tool
 
 Note: To check which version of Visual Studio Appveyor is currently using see [here](https://www.appveyor.com/docs/windows-images-software/).
 
+Note: Optimise flags have been deliberately removed from QMAKE flags. This is an attempt to avoid ABI compatibility issues between minor updates of the msvc compiler.
+See https://docs.microsoft.com/en-us/cpp/porting/binary-compat-2015-2017?view=msvc-160.
+
 ### Qt5.12.6
 Build steps
 ````
 Download source from https://download.qt.io/official_releases/qt/5.12/5.12.6/single/qt-everywhere-src-5.12.6.zip
 Modify qt-everywhere-src-5.12.6\qt-everywhere-src-5.12.6\qtbase\mkspecs\common\msvc-desktop.conf and set:
-QMAKE_CFLAGS_RELEASE    = $$QMAKE_CFLAGS_OPTIMIZE -MT
-QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_OPTIMIZE -Zi -MT
+QMAKE_CFLAGS_RELEASE    = -MT
+QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -Zi -MT
 QMAKE_CFLAGS_DEBUG      = -Zi -MTd
 Open x64 Native Tools Command Prompt for VS 2019
 mkdir qtbuild
@@ -27,8 +30,8 @@ Build steps
 ````
 Download source from https://download.qt.io/official_releases/qt/5.9/5.9.8/single/
 Modify qt-everywhere-opensource-src-5.9.8\qt-everywhere-opensource-src-5.9.8\qtbase\mkspecs\common\msvc-desktop.conf and set:
-QMAKE_CFLAGS_RELEASE    = $$QMAKE_CFLAGS_OPTIMIZE -MT
-QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += $$QMAKE_CFLAGS_OPTIMIZE -Zi -MT
+QMAKE_CFLAGS_RELEASE    = -MT
+QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -Zi -MT
 QMAKE_CFLAGS_DEBUG      = -Zi -MTd
 Open x64 Native Tools Command Prompt for VS 2019
 mkdir qtbuild
