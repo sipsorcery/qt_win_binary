@@ -9,6 +9,22 @@ Note: To check which version of Visual Studio Appveyor is currently using see [h
 Note: Optimise flags have been deliberately removed from QMAKE flags. This is an attempt to avoid ABI compatibility issues between minor updates of the msvc compiler.
 See https://docs.microsoft.com/en-us/cpp/porting/binary-compat-2015-2017?view=msvc-160.
 
+### Qt5.12.10
+Build steps
+````
+Download source from https://download.qt.io/official_releases/qt/5.12/5.12.10/single/qt-everywhere-src-5.12.10.zip
+Modify qt-everywhere-src-5.12.10\qt-everywhere-src-5.12.10\qtbase\mkspecs\common\msvc-desktop.conf and set:
+QMAKE_CFLAGS_RELEASE    = -MT
+QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -Zi -MT
+QMAKE_CFLAGS_DEBUG      = -Zi -MTd
+Open x64 Native Tools Command Prompt for VS 2019
+mkdir qtbuild
+cd qtbuild
+..\configure -developer-build -confirm-license -debug-and-release -opensource -platform win32-msvc -opengl desktop -no-shared -static -no-static-runtime -mp -qt-zlib -qt-pcre -qt-libpng -ltcg -make libs -make tools -no-libjpeg -nomake examples -no-compile-examples -no-dbus -no-libudev -no-icu -no-gtk -no-opengles3 -no-angle -no-sql-sqlite -no-sql-odbc -no-sqlite -no-libudev -no-vulkan -skip qt3d -skip qtactiveqt -skip qtandroidextras -skip qtcanvas3d -skip qtcharts -skip qtconnectivity -skip qtdatavis3d -skip qtdeclarative -skip qtdoc -skip qtgamepad -skip qtgraphicaleffects -skip qtimageformats -skip qtlocation -skip qtmacextras -skip qtmultimedia -skip qtnetworkauth -skip qtpurchasing -skip qtquickcontrols -skip qtquickcontrols2 -skip qtscript -skip qtscxml -skip qtsensors -skip qtserialbus -skip qtserialport -skip qtspeech -skip qtvirtualkeyboard -skip qtwayland -skip qtwebchannel -skip qtwebengine -skip qtwebsockets -skip qtwebview -skip qtx11extras -skip qtxmlpatterns -nomake tests -no-openssl -prefix C:\Qt5.12.10_x64_static_vs2019_1694
+nmake
+nmake install
+````
+
 ### Qt5.12.6
 Build steps
 ````
